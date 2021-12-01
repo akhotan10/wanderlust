@@ -7,7 +7,7 @@
     <%= f.label :trip_id %>
 
     <!-- Input for trip_id start -->
-    <%= f.text_field :trip_id, class: "form-control" %>
+    <%= f.collection_select :trip_id, Trip.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for trip_id end -->
   </div>
   <!-- Label and input for trip_id end -->
