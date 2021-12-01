@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Eating List #<%= eating_list.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Trip</dt>
+      <!-- Display trip_id start -->
+      <dd><%= eating_list.trip_id %></dd>
+      <!-- Display trip_id end -->
+
+      <dt>Restaurant</dt>
+      <!-- Display restaurant_id start -->
+      <dd><%= eating_list.restaurant_id %></dd>
+      <!-- Display restaurant_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back eating_list, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link eating_list start -->
+      <div class="col">
+        <%= link_to edit_eating_list_url(eating_list), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link eating_list end -->
+
+      <!-- Delete link eating_list start -->
+      <div class="col">
+        <%= link_to eating_list, method: :delete, data: { confirm: "Do you really want to delete this eating_list?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link eating_list end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(eating_list.updated_at) %> ago
+  </div>
+</div>

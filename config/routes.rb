@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :eating_lists
   resources :itineraries
   resources :cities
   resources :countries
