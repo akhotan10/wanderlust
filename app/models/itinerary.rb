@@ -1,6 +1,8 @@
 class Itinerary < ApplicationRecord
   # Direct associations
 
+  belongs_to :country
+
   belongs_to :trip
 
   # Indirect associations

@@ -4,6 +4,8 @@ RSpec.describe Itinerary, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:country) }
+
     it { should belong_to(:trip) }
 
     end
