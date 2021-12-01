@@ -3,7 +3,8 @@ class EatingListsController < ApplicationController
 
   # GET /eating_lists
   def index
-    @eating_lists = EatingList.page(params[:page]).per(10)
+    @q = EatingList.ransack(params[:q])
+    @eating_lists = @q.result(:distinct => true).includes(:trip, :restaurant).page(params[:page]).per(10)
   end
 
   # GET /eating_lists/1

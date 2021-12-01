@@ -3,7 +3,8 @@ class HighlightsController < ApplicationController
 
   # GET /highlights
   def index
-    @highlights = Highlight.page(params[:page]).per(10)
+    @q = Highlight.ransack(params[:q])
+    @highlights = @q.result(:distinct => true).includes(:trip).page(params[:page]).per(10)
   end
 
   # GET /highlights/1

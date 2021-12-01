@@ -3,7 +3,8 @@ class ItinerariesController < ApplicationController
 
   # GET /itineraries
   def index
-    @itineraries = Itinerary.page(params[:page]).per(10)
+    @q = Itinerary.ransack(params[:q])
+    @itineraries = @q.result(:distinct => true).includes(:trip, :country).page(params[:page]).per(10)
   end
 
   # GET /itineraries/1
