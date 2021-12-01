@@ -13,7 +13,7 @@
     <%= f.label :restaurant_id %>
 
     <!-- Input for restaurant_id start -->
-    <%= f.text_field :restaurant_id, class: "form-control" %>
+    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for restaurant_id end -->
   </div>
   <!-- Label and input for restaurant_id end -->
