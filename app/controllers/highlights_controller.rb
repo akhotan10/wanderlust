@@ -1,24 +1,19 @@
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: %i[show edit update destroy]
 
-  # GET /highlights
   def index
     @q = Highlight.ransack(params[:q])
     @highlights = @q.result(distinct: true).includes(:trip).page(params[:page]).per(10)
   end
 
-  # GET /highlights/1
   def show; end
 
-  # GET /highlights/new
   def new
     @highlight = Highlight.new
   end
 
-  # GET /highlights/1/edit
   def edit; end
 
-  # POST /highlights
   def create
     @highlight = Highlight.new(highlight_params)
 
@@ -34,7 +29,6 @@ class HighlightsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /highlights/1
   def update
     if @highlight.update(highlight_params)
       redirect_to @highlight, notice: "Highlight was successfully updated."
@@ -43,7 +37,6 @@ class HighlightsController < ApplicationController
     end
   end
 
-  # DELETE /highlights/1
   def destroy
     @highlight.destroy
     message = "Highlight was successfully deleted."
@@ -56,12 +49,10 @@ class HighlightsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_highlight
     @highlight = Highlight.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def highlight_params
     params.require(:highlight).permit(:description, :trip_id)
   end
