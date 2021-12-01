@@ -12,7 +12,11 @@
 
       <dt>Trip</dt>
       <!-- Display trip_id start -->
-      <dd><%= highlight.trip_id %></dd>
+      <dd>
+        <% if @highlight.trip.present? %>
+          <%= link_to highlight.trip, highlight.trip %>
+        <% end %>
+      </dd>
       <!-- Display trip_id end -->
 
     </dl>

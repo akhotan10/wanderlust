@@ -22,7 +22,11 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= trip.user_id %></dd>
+      <dd>
+        <% if @trip.user.present? %>
+          <%= link_to trip.user, trip.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Cover photo</dt>

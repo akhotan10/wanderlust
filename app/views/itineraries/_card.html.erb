@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Country</dt>
       <!-- Display country_id start -->
-      <dd><%= itinerary.country_id %></dd>
+      <dd>
+        <% if @itinerary.country.present? %>
+          <%= link_to itinerary.country, itinerary.country %>
+        <% end %>
+      </dd>
       <!-- Display country_id end -->
 
       <dt>Trip</dt>
       <!-- Display trip_id start -->
-      <dd><%= itinerary.trip_id %></dd>
+      <dd>
+        <% if @itinerary.trip.present? %>
+          <%= link_to itinerary.trip, itinerary.trip %>
+        <% end %>
+      </dd>
       <!-- Display trip_id end -->
 
     </dl>
