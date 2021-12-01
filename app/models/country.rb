@@ -1,6 +1,9 @@
 class Country < ApplicationRecord
   # Direct associations
 
+  has_many   :cities,
+             :dependent => :destroy
+
   has_many   :itineraries,
              :dependent => :destroy
 
