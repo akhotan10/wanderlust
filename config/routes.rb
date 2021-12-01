@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "trips#index"
   resources :dishes
   resources :eating_lists
   resources :itineraries
