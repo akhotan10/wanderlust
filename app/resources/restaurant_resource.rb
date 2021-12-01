@@ -8,6 +8,8 @@ class RestaurantResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :eating_lists
+
   # Indirect associations
 
 end

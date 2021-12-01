@@ -7,6 +7,8 @@ class EatingListResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :restaurant
+
   belongs_to :trip
 
   # Indirect associations
