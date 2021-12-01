@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  mount_uploader :cover_photo, CoverPhotoUploader
+
   # Direct associations
 
   has_many   :highlights,

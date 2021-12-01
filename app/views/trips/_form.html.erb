@@ -120,7 +120,7 @@
 
     <%= f.label :cover_photo %>
     <!-- Input for cover_photo start -->
-    <%= f.text_field :cover_photo, class: cover_photo_class, placeholder: "Enter cover photo" %>
+    <%= f.file_field :cover_photo, class: "form-control" %>
     <!-- Input for cover_photo end -->
     <% if cover_photo_was_invalid %>
       <% trip.errors.full_messages_for(:cover_photo).each do |message| %>

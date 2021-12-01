@@ -27,7 +27,9 @@
 
       <dt>Cover photo</dt>
       <!-- Display cover_photo start -->
-      <dd><%= trip.cover_photo %></dd>
+      <dd>
+        <%= cl_image_tag @trip.cover_photo, class: "img-fluid" %>
+      </dd>
       <!-- Display cover_photo end -->
 
       <dt>Photo album link</dt>
