@@ -7,6 +7,8 @@ class CityResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :country
+
   # Indirect associations
 
 end

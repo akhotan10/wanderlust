@@ -6,6 +6,8 @@ class CountryResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :cities
+
   has_many   :itineraries
 
   # Indirect associations
