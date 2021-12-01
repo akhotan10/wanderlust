@@ -11,6 +11,8 @@ class TripResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :highlights
+
   has_many   :activities
 
   has_many   :eating_lists
