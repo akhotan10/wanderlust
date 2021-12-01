@@ -1,6 +1,9 @@
 class Trip < ApplicationRecord
   # Direct associations
 
+  has_many   :itineraries,
+             :dependent => :destroy
+
   belongs_to :user
 
   # Indirect associations
