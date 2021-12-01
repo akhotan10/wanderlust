@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Itinerary #<%= itinerary.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Country</dt>
+      <!-- Display country_id start -->
+      <dd><%= itinerary.country_id %></dd>
+      <!-- Display country_id end -->
+
+      <dt>Trip</dt>
+      <!-- Display trip_id start -->
+      <dd><%= itinerary.trip_id %></dd>
+      <!-- Display trip_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back itinerary, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link itinerary start -->
+      <div class="col">
+        <%= link_to edit_itinerary_url(itinerary), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link itinerary end -->
+
+      <!-- Delete link itinerary start -->
+      <div class="col">
+        <%= link_to itinerary, method: :delete, data: { confirm: "Do you really want to delete this itinerary?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link itinerary end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(itinerary.updated_at) %> ago
+  </div>
+</div>

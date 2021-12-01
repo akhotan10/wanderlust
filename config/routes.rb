@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :itineraries
   resources :cities
   resources :countries
   resources :activities
