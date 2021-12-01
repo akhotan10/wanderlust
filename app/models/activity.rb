@@ -12,5 +12,4 @@ class Activity < ApplicationRecord
   def to_s
     trip.to_s
   end
-
 end

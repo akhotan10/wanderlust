@@ -1,15 +1,14 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: %i[show edit update destroy]
 
   # GET /activities
   def index
     @q = Activity.ransack(params[:q])
-    @activities = @q.result(:distinct => true).includes(:trip).page(params[:page]).per(10)
+    @activities = @q.result(distinct: true).includes(:trip).page(params[:page]).per(10)
   end
 
   # GET /activities/1
-  def show
-  end
+  def show; end
 
   # GET /activities/new
   def new
@@ -17,17 +16,16 @@ class ActivitiesController < ApplicationController
   end
 
   # GET /activities/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /activities
   def create
     @activity = Activity.new(activity_params)
 
     if @activity.save
-      message = 'Activity was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Activity was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @activity, notice: message
       end
@@ -39,7 +37,7 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
-      redirect_to @activity, notice: 'Activity was successfully updated.'
+      redirect_to @activity, notice: "Activity was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     message = "Activity was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to activities_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity
-      @activity = Activity.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def activity_params
-      params.require(:activity).permit(:trip_id, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity
+    @activity = Activity.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def activity_params
+    params.require(:activity).permit(:trip_id, :description)
+  end
 end

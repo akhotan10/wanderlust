@@ -10,5 +10,4 @@ class DishResource < ApplicationResource
   belongs_to :restaurant
 
   # Indirect associations
-
 end

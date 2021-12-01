@@ -14,5 +14,4 @@ class Itinerary < ApplicationRecord
   def to_s
     country.to_s
   end
-
 end

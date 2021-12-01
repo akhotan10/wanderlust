@@ -13,7 +13,7 @@ class Api::V1::ItinerariesController < Api::V1::GraphitiController
     itinerary = ItineraryResource.build(params)
 
     if itinerary.save
-      render jsonapi: itinerary, status: 201
+      render jsonapi: itinerary, status: :created
     else
       render jsonapi_errors: itinerary
     end
@@ -33,7 +33,7 @@ class Api::V1::ItinerariesController < Api::V1::GraphitiController
     itinerary = ItineraryResource.find(params)
 
     if itinerary.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: itinerary
     end

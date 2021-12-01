@@ -11,5 +11,4 @@ class CountryResource < ApplicationResource
   has_many   :itineraries
 
   # Indirect associations
-
 end

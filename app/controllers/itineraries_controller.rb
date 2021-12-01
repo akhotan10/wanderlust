@@ -1,15 +1,15 @@
 class ItinerariesController < ApplicationController
-  before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
+  before_action :set_itinerary, only: %i[show edit update destroy]
 
   # GET /itineraries
   def index
     @q = Itinerary.ransack(params[:q])
-    @itineraries = @q.result(:distinct => true).includes(:trip, :country).page(params[:page]).per(10)
+    @itineraries = @q.result(distinct: true).includes(:trip,
+                                                      :country).page(params[:page]).per(10)
   end
 
   # GET /itineraries/1
-  def show
-  end
+  def show; end
 
   # GET /itineraries/new
   def new
@@ -17,17 +17,16 @@ class ItinerariesController < ApplicationController
   end
 
   # GET /itineraries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /itineraries
   def create
     @itinerary = Itinerary.new(itinerary_params)
 
     if @itinerary.save
-      message = 'Itinerary was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Itinerary was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @itinerary, notice: message
       end
@@ -39,7 +38,7 @@ class ItinerariesController < ApplicationController
   # PATCH/PUT /itineraries/1
   def update
     if @itinerary.update(itinerary_params)
-      redirect_to @itinerary, notice: 'Itinerary was successfully updated.'
+      redirect_to @itinerary, notice: "Itinerary was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,22 @@ class ItinerariesController < ApplicationController
   def destroy
     @itinerary.destroy
     message = "Itinerary was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to itineraries_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_itinerary
-      @itinerary = Itinerary.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def itinerary_params
-      params.require(:itinerary).permit(:country_id, :trip_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_itinerary
+    @itinerary = Itinerary.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def itinerary_params
+    params.require(:itinerary).permit(:country_id, :trip_id)
+  end
 end

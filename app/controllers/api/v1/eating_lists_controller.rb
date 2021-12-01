@@ -13,7 +13,7 @@ class Api::V1::EatingListsController < Api::V1::GraphitiController
     eating_list = EatingListResource.build(params)
 
     if eating_list.save
-      render jsonapi: eating_list, status: 201
+      render jsonapi: eating_list, status: :created
     else
       render jsonapi_errors: eating_list
     end
@@ -33,7 +33,7 @@ class Api::V1::EatingListsController < Api::V1::GraphitiController
     eating_list = EatingListResource.find(params)
 
     if eating_list.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: eating_list
     end

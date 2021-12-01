@@ -2,10 +2,10 @@ class Country < ApplicationRecord
   # Direct associations
 
   has_many   :cities,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :itineraries,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Country < ApplicationRecord
   def to_s
     created_at
   end
-
 end

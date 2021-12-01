@@ -2,10 +2,10 @@ class Restaurant < ApplicationRecord
   # Direct associations
 
   has_many   :dishes,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :eating_lists,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Restaurant < ApplicationRecord
   def to_s
     country_id
   end
-
 end

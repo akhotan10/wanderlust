@@ -13,5 +13,4 @@ class RestaurantResource < ApplicationResource
   has_many   :eating_lists
 
   # Indirect associations
-
 end

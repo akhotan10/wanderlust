@@ -4,16 +4,16 @@ class Trip < ApplicationRecord
   # Direct associations
 
   has_many   :highlights,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :activities,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :eating_lists,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :itineraries,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -26,5 +26,4 @@ class Trip < ApplicationRecord
   def to_s
     title
   end
-
 end

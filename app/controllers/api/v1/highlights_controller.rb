@@ -13,7 +13,7 @@ class Api::V1::HighlightsController < Api::V1::GraphitiController
     highlight = HighlightResource.build(params)
 
     if highlight.save
-      render jsonapi: highlight, status: 201
+      render jsonapi: highlight, status: :created
     else
       render jsonapi_errors: highlight
     end
@@ -33,7 +33,7 @@ class Api::V1::HighlightsController < Api::V1::GraphitiController
     highlight = HighlightResource.find(params)
 
     if highlight.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: highlight
     end

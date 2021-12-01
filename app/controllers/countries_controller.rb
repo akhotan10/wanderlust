@@ -1,10 +1,11 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_country, only: %i[show edit update destroy]
 
   # GET /countries
   def index
     @q = Country.ransack(params[:q])
-    @countries = @q.result(:distinct => true).includes(:itineraries, :cities).page(params[:page]).per(10)
+    @countries = @q.result(distinct: true).includes(:itineraries,
+                                                    :cities).page(params[:page]).per(10)
   end
 
   # GET /countries/1
@@ -19,15 +20,14 @@ class CountriesController < ApplicationController
   end
 
   # GET /countries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /countries
   def create
     @country = Country.new(country_params)
 
     if @country.save
-      redirect_to @country, notice: 'Country was successfully created.'
+      redirect_to @country, notice: "Country was successfully created."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CountriesController < ApplicationController
   # PATCH/PUT /countries/1
   def update
     if @country.update(country_params)
-      redirect_to @country, notice: 'Country was successfully updated.'
+      redirect_to @country, notice: "Country was successfully updated."
     else
       render :edit
     end
@@ -45,17 +45,18 @@ class CountriesController < ApplicationController
   # DELETE /countries/1
   def destroy
     @country.destroy
-    redirect_to countries_url, notice: 'Country was successfully destroyed.'
+    redirect_to countries_url, notice: "Country was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_country
-      @country = Country.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def country_params
-      params.require(:country).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_country
+    @country = Country.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def country_params
+    params.require(:country).permit(:name)
+  end
 end

@@ -1,15 +1,14 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:show, :edit, :update, :destroy]
+  before_action :set_highlight, only: %i[show edit update destroy]
 
   # GET /highlights
   def index
     @q = Highlight.ransack(params[:q])
-    @highlights = @q.result(:distinct => true).includes(:trip).page(params[:page]).per(10)
+    @highlights = @q.result(distinct: true).includes(:trip).page(params[:page]).per(10)
   end
 
   # GET /highlights/1
-  def show
-  end
+  def show; end
 
   # GET /highlights/new
   def new
@@ -17,17 +16,16 @@ class HighlightsController < ApplicationController
   end
 
   # GET /highlights/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /highlights
   def create
     @highlight = Highlight.new(highlight_params)
 
     if @highlight.save
-      message = 'Highlight was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Highlight was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @highlight, notice: message
       end
@@ -39,7 +37,7 @@ class HighlightsController < ApplicationController
   # PATCH/PUT /highlights/1
   def update
     if @highlight.update(highlight_params)
-      redirect_to @highlight, notice: 'Highlight was successfully updated.'
+      redirect_to @highlight, notice: "Highlight was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class HighlightsController < ApplicationController
   def destroy
     @highlight.destroy
     message = "Highlight was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to highlights_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_highlight
-      @highlight = Highlight.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def highlight_params
-      params.require(:highlight).permit(:description, :trip_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_highlight
+    @highlight = Highlight.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def highlight_params
+    params.require(:highlight).permit(:description, :trip_id)
+  end
 end

@@ -12,5 +12,4 @@ class Dish < ApplicationRecord
   def to_s
     name
   end
-
 end
