@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Country</dt>
-      <!-- Display country_id start -->
       <dd>
         <% if @itinerary.country.present? %>
           <%= link_to itinerary.country, itinerary.country %>
         <% end %>
       </dd>
-      <!-- Display country_id end -->
 
       <dt>Trip</dt>
-      <!-- Display trip_id start -->
       <dd>
         <% if @itinerary.trip.present? %>
           <%= link_to itinerary.trip, itinerary.trip %>
         <% end %>
       </dd>
-      <!-- Display trip_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back itinerary, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link itinerary start -->
       <div class="col">
         <%= link_to edit_itinerary_url(itinerary), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link itinerary end -->
 
-      <!-- Delete link itinerary start -->
       <div class="col">
         <%= link_to itinerary, method: :delete, data: { confirm: "Do you really want to delete this itinerary?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link itinerary end -->
     </div>
   </div>
 

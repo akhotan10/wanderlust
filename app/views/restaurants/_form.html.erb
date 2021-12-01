@@ -1,7 +1,6 @@
 <% was_validated = restaurant.errors.any? %>
 
 <%= form_with(model: restaurant, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for country_id start -->
   <div class="form-group">
     <% country_class = "form-control" %>
     <% country_was_invalid = restaurant.errors.include?(:country) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :country_id %>
-    <!-- Input for country_id start -->
     <%= f.number_field :country_id, class: country_class, placeholder: "Enter country" %>
-    <!-- Input for country_id end -->
     <% if country_was_invalid %>
       <% restaurant.errors.full_messages_for(:country).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for country_id end -->
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = restaurant.errors.include?(:name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% restaurant.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for rating start -->
   <div class="form-group">
     <% rating_class = "form-control" %>
     <% rating_was_invalid = restaurant.errors.include?(:rating) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :rating %>
-    <!-- Input for rating start -->
     <%= f.number_field :rating, class: rating_class, placeholder: "Enter rating" %>
-    <!-- Input for rating end -->
     <% if rating_was_invalid %>
       <% restaurant.errors.full_messages_for(:rating).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for rating end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

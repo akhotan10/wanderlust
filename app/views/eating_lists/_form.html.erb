@@ -1,7 +1,6 @@
 <% was_validated = eating_list.errors.any? %>
 
 <%= form_with(model: eating_list, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for trip_id start -->
   <div class="form-group">
     <% trip_class = "form-control" %>
     <% trip_was_invalid = eating_list.errors.include?(:trip) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :trip_id %>
-    <!-- Input for trip_id start -->
     <%= f.collection_select :trip_id, Trip.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for trip_id end -->
     <% if trip_was_invalid %>
       <% eating_list.errors.full_messages_for(:trip).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for trip_id end -->
-  <!-- Label and input for restaurant_id start -->
   <div class="form-group">
     <% restaurant_class = "form-control" %>
     <% restaurant_was_invalid = eating_list.errors.include?(:restaurant) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :restaurant_id %>
-    <!-- Input for restaurant_id start -->
     <%= f.collection_select :restaurant_id, Restaurant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for restaurant_id end -->
     <% if restaurant_was_invalid %>
       <% eating_list.errors.full_messages_for(:restaurant).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for restaurant_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

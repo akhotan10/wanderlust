@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @trip.highlights.each do |highlight| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to highlight, highlight %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to highlight, method: :delete, data: { confirm: "Do you really want to delete this highlight" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="trip_highlights_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "trips/trip_highlights_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

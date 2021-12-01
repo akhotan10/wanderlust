@@ -6,19 +6,13 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Country</dt>
-      <!-- Display country_id start -->
       <dd><%= restaurant.country_id %></dd>
-      <!-- Display country_id end -->
 
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= restaurant.name %></dd>
-      <!-- Display name end -->
 
       <dt>Rating</dt>
-      <!-- Display rating start -->
       <dd><%= restaurant.rating %></dd>
-      <!-- Display rating end -->
 
     </dl>
 
@@ -27,21 +21,17 @@
         <%= link_to_show_or_back restaurant, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link restaurant start -->
       <div class="col">
         <%= link_to edit_restaurant_url(restaurant), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link restaurant end -->
 
-      <!-- Delete link restaurant start -->
       <div class="col">
         <%= link_to restaurant, method: :delete, data: { confirm: "Do you really want to delete this restaurant?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link restaurant end -->
     </div>
   </div>
 
