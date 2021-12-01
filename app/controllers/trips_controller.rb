@@ -3,7 +3,7 @@ class TripsController < ApplicationController
 
   # GET /trips
   def index
-    @trips = Trip.all
+    @trips = Trip.page(params[:page]).per(10)
   end
 
   # GET /trips/1

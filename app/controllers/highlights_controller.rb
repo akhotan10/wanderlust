@@ -3,7 +3,7 @@ class HighlightsController < ApplicationController
 
   # GET /highlights
   def index
-    @highlights = Highlight.all
+    @highlights = Highlight.page(params[:page]).per(10)
   end
 
   # GET /highlights/1

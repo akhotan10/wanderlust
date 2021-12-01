@@ -3,7 +3,7 @@ class EatingListsController < ApplicationController
 
   # GET /eating_lists
   def index
-    @eating_lists = EatingList.all
+    @eating_lists = EatingList.page(params[:page]).per(10)
   end
 
   # GET /eating_lists/1

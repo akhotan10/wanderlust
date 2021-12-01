@@ -3,7 +3,7 @@ class ItinerariesController < ApplicationController
 
   # GET /itineraries
   def index
-    @itineraries = Itinerary.all
+    @itineraries = Itinerary.page(params[:page]).per(10)
   end
 
   # GET /itineraries/1
