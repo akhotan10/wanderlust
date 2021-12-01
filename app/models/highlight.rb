@@ -1,6 +1,8 @@
 class Highlight < ApplicationRecord
   # Direct associations
 
+  belongs_to :trip
+
   # Indirect associations
 
   # Validations
