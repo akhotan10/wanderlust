@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @trip = Trip.new
   end
 
   # GET /users/new

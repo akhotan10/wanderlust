@@ -8,6 +8,8 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   def show
+    @city = City.new
+    @itinerary = Itinerary.new
   end
 
   # GET /countries/new

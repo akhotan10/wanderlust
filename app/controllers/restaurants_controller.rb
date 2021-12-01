@@ -8,6 +8,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
+    @dish = Dish.new
+    @eating_list = EatingList.new
   end
 
   # GET /restaurants/new

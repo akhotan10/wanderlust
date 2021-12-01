@@ -1,0 +1,62 @@
+<!-- Form trip start -->
+<%= form_with(model: @trip, local: true) do |f| %>
+<!-- Form trip end -->
+
+  <!-- Label and input for title start -->
+  <div class="form-group">
+    <%= f.label :title %>
+
+    <!-- Input for title start -->
+    <%= f.text_field :title, class: "form-control" %>
+    <!-- Input for title end -->
+  </div>
+  <!-- Label and input for title end -->
+
+  <!-- Label and input for start_date start -->
+  <div class="form-group">
+    <%= f.label :start_date %>
+
+    <!-- Input for start_date start -->
+    <%= f.date_select :start_date, class: "form-control" %>
+    <!-- Input for start_date end -->
+  </div>
+  <!-- Label and input for start_date end -->
+
+  <!-- Label and input for end_date start -->
+  <div class="form-group">
+    <%= f.label :end_date %>
+
+    <!-- Input for end_date start -->
+    <%= f.date_select :end_date, class: "form-control" %>
+    <!-- Input for end_date end -->
+  </div>
+  <!-- Label and input for end_date end -->
+
+  <!-- Label and input for user_id start -->
+  <!-- Input for user_id start -->
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <!-- Input for user_id end -->
+  <!-- Label and input for user_id end -->
+
+  <!-- Label and input for cover_photo start -->
+  <div class="form-group">
+    <%= f.label :cover_photo %>
+
+    <!-- Input for cover_photo start -->
+    <%= f.text_field :cover_photo, class: "form-control" %>
+    <!-- Input for cover_photo end -->
+  </div>
+  <!-- Label and input for cover_photo end -->
+
+  <!-- Label and input for photo_album_link start -->
+  <div class="form-group">
+    <%= f.label :photo_album_link %>
+
+    <!-- Input for photo_album_link start -->
+    <%= f.text_field :photo_album_link, class: "form-control" %>
+    <!-- Input for photo_album_link end -->
+  </div>
+  <!-- Label and input for photo_album_link end -->
+
+  <%= f.submit "Create trip", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -1,0 +1,22 @@
+<!-- Form eating_list start -->
+<%= form_with(model: @eating_list, local: true) do |f| %>
+<!-- Form eating_list end -->
+
+  <!-- Label and input for trip_id start -->
+  <div class="form-group">
+    <%= f.label :trip_id %>
+
+    <!-- Input for trip_id start -->
+    <%= f.text_field :trip_id, class: "form-control" %>
+    <!-- Input for trip_id end -->
+  </div>
+  <!-- Label and input for trip_id end -->
+
+  <!-- Label and input for restaurant_id start -->
+  <!-- Input for restaurant_id start -->
+  <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+  <!-- Input for restaurant_id end -->
+  <!-- Label and input for restaurant_id end -->
+
+  <%= f.submit "Create eating list", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

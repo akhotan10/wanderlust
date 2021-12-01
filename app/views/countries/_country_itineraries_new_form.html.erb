@@ -1,0 +1,22 @@
+<!-- Form itinerary start -->
+<%= form_with(model: @itinerary, local: true) do |f| %>
+<!-- Form itinerary end -->
+
+  <!-- Label and input for country_id start -->
+  <!-- Input for country_id start -->
+  <%= f.hidden_field :country_id, value: @country.id %>
+  <!-- Input for country_id end -->
+  <!-- Label and input for country_id end -->
+
+  <!-- Label and input for trip_id start -->
+  <div class="form-group">
+    <%= f.label :trip_id %>
+
+    <!-- Input for trip_id start -->
+    <%= f.text_field :trip_id, class: "form-control" %>
+    <!-- Input for trip_id end -->
+  </div>
+  <!-- Label and input for trip_id end -->
+
+  <%= f.submit "Create itinerary", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -1,0 +1,22 @@
+<!-- Form activity start -->
+<%= form_with(model: @activity, local: true) do |f| %>
+<!-- Form activity end -->
+
+  <!-- Label and input for trip_id start -->
+  <!-- Input for trip_id start -->
+  <%= f.hidden_field :trip_id, value: @trip.id %>
+  <!-- Input for trip_id end -->
+  <!-- Label and input for trip_id end -->
+
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <%= f.label :description %>
+
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: "form-control" %>
+    <!-- Input for description end -->
+  </div>
+  <!-- Label and input for description end -->
+
+  <%= f.submit "Create activity", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

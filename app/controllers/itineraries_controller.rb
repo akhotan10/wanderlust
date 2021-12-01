@@ -24,7 +24,12 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
 
     if @itinerary.save
-      redirect_to @itinerary, notice: 'Itinerary was successfully created.'
+      message = 'Itinerary was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @itinerary, notice: message
+      end
     else
       render :new
     end
