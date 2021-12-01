@@ -1,6 +1,9 @@
 class Restaurant < ApplicationRecord
   # Direct associations
 
+  has_many   :eating_lists,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
